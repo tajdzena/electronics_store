@@ -13,6 +13,7 @@ class Department extends Model
     protected $primaryKey = 'department_id';
 
     protected $fillable = ['department_name'];
+    public $timestamps = false;
 
     public function products()
     {

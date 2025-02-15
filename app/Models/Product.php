@@ -20,6 +20,12 @@ class Product extends Model
                             'department_id',
                             'manufacturer_id'];
 
+//    protected $casts = [
+//        'sku' => 'integer',
+//    ];
+
+    public $timestamps = false;
+    public $incrementing = false;
 
     //Veze sa modelima Category, Department i Manufacturer
     //Svaki proizvod ima tj. pripada samo jednoj kategoriji, odeljenju i proizvodjacu

@@ -13,6 +13,7 @@ class Category extends Model
     protected $primaryKey = 'category_id';
 
     protected $fillable = ['category_name'];
+    public $timestamps = false;
 
     //Svaka kategorija moze imati vise proizvoda
     public function products()

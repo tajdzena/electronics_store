@@ -1,0 +1,2 @@
+product_number,category_name,department_name,manufacturer_name,upc,sku,regular_price,sale_price,description
+FSLKTEST,KatTEST,DepTEST,ManuTEST,045940553498,4545456,324.99,335.99,BLABLablablablabla; blablabla; blabalbas

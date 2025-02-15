@@ -13,6 +13,7 @@ class Manufacturer extends Model
     protected $primaryKey = 'manufacturer_id';
 
     protected $fillable = ['manufacturer_name'];
+    public $timestamps = false;
 
     public function products()
     {
