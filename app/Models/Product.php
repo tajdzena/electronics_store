@@ -10,9 +10,12 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'product'; //Da ne bi Laravel "pretpostavljao" ime tabele
-    protected $primaryKey = ['product_number', 'upc']; //Kombinovani primarni kljuc
+    protected $primaryKey = 'upc'; //Kombinovani kljucevi ne rade u Laravelu bas kako sam mislila :) , ideja je bila za upc i product_number
+                                    //Jer product_number ne mora uvek da bude unique, moze da se desi da dve kompanije potrefe isti
+    public $incrementing = false;
 
-    protected $fillable = ['sku',
+    protected $fillable = ['product_number',
+                            'sku',
                             'regular_price',
                             'sale_price',
                             'description',
@@ -20,12 +23,16 @@ class Product extends Model
                             'department_id',
                             'manufacturer_id'];
 
-//    protected $casts = [
-//        'sku' => 'integer',
-//    ];
+
+    //Ispisivanje cena u JSON moze da ispadne kao string umesto decimal kao u bazi
+    protected $casts = [
+        'sku' => 'integer',
+        'regular_price' => 'float',
+        'sale_price' => 'float'
+    ];
 
     public $timestamps = false;
-    public $incrementing = false;
+
 
     //Veze sa modelima Category, Department i Manufacturer
     //Svaki proizvod ima tj. pripada samo jednoj kategoriji, odeljenju i proizvodjacu

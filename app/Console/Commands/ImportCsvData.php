@@ -171,6 +171,7 @@ class ImportCsvData extends Command{
         if(($fileReading = fopen($file, 'r')) !== false) { //Ako se uspesno otvorio fajl u modu za citanje
             while(($row = fgets($fileReading)) !== false) { //Dok ne stignemo do kraja reda
 
+                $row = rtrim($row);
                 $row = $this->sanitize_csv_row($row);
                 //$this->info(print_r($row));
 
@@ -239,7 +240,7 @@ class ImportCsvData extends Command{
                     'product_number' => $row['product_number'],
                     'upc' => $row['upc']
                 ], [
-                    'sku' => (int)$row['sku'],
+                    'sku' => $row['sku'],
                     'regular_price' => $row['regular_price'],
                     'sale_price' => $row['sale_price'],
                     'description' => $row['description'],
