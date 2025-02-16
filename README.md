@@ -7,13 +7,11 @@
 
 
 <p> -- Neke informacije o projektu -- </p>
-<p> Za povezivanje na bazu podataka, .env fajl je konfigurisan na sledeći način: </p>
+<p> Za lokalno povezivanje na bazu podataka, .env fajl je konfigurisan na sledeći način: </p>
 <p> 	DB_CONNECTION=mysql </p>
 <p> 	DB_HOST=127.0.0.1 </p> 
 <p> 	DB_PORT=3306 </p>
-<p> 	DB_DATABASE=electronics_store </p>
-<p> 	DB_USERNAME=root </p>
-<p> 	DB_PASSWORD= </p> <br>
+<p> 	DB_DATABASE=electronics_store </p> <br>
 
 <p> Komanda pomoću koje se pokreće druga tražena funkcionalnost, uvoz podataka iz .csv priloženog fajla u bazu: </p>
 <p> 	php artisan import:csv putanja/do/product_categories.csv </p> <br>
