@@ -1,8 +1,8 @@
 <p> -- Setup projekta -- </p>
-<p> • Framework: Laravel
-    • Okruženja: PhpStorm (JetBrains), phpMyAdmin, Postman
-    • Jezici: PHP, MySQL
-    • Alati: Composer, Eloquent ORM, Artisan
+<p> • Framework: Laravel <br>
+    • Okruženja: PhpStorm (JetBrains), phpMyAdmin, Postman <br>
+    • Jezici: PHP, MySQL <br>
+    • Alati: Composer, Eloquent ORM, Artisan <br>
     • Server: XAMPP Control Panel </p> <br>
 
 
