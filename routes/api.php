@@ -29,6 +29,8 @@ Route::get('/products/category', [ProductController::class, 'byCategoryName']);
 Route::delete('/products/{upc}', [ProductController::class, 'destroy']); //Brisanje proizvoda
 Route::put('/products/{upc}', [ProductController::class, 'update']); //Izmena proizvoda
 
+//Bonus zadatak, .csv fajl proizvoda po kategoriji
+Route::get('/products/csv/{category_id}', [ProductController::class, 'generateCSV']);
 
 Route::get('/categories', [CategoryController::class, 'index']); //Prikaz svih kategorija
 Route::delete('/categories/{category_id}', [CategoryController::class, 'destroy']); //Brisanje kategorije

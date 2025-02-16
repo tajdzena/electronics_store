@@ -145,4 +145,58 @@ class ProductController extends Controller
         ], 200, [], JSON_PRETTY_PRINT);
     }
 
+
+
+    //Generisanje .csv fajla
+    public function generateCSV($category_id)
+    {
+        //Dohvatanje kategorije
+        $category = Category::find($category_id);
+
+        if(!$category){
+            return response()->json(['error' => 'Kategorija nije pronadjena!'], 404);
+        }
+
+        //Proizvodi koji pripadaju datoj kategoriji
+        $products = Product::where('category_id', $category_id)->get();
+
+        if($products->isEmpty()){
+            return response()->json(['error' => 'Nema proizvoda u ovoj kategoriji!'], 404);
+        }
+
+        //Sablon za ime fajla
+        //Zamena karaktera koji nisu alfanumericki sa _
+        $category_name = preg_replace('/[^a-zA-Z0-9]/', '_', strtolower($category->category_name));
+        //Datum i vreme
+        $date = now()->format('Y_m_d-H_i'); // Format: godina(sve 4 cifre)_mesec_dan-sat_minut
+        $file_name = "{$category_name}_{$date}.csv";
+
+        //Otvaranje fajla za pisanje (ukoliko ne postoji, kreira se)
+        $file = fopen(storage_path("app/public/{$file_name}"), 'w');
+
+        //Zaglavlja, ista kao u originalnom .csv
+        fputcsv($file, ['product_number', 'category_name', 'department_name', 'manufacturer_name',
+                        'upc', 'sku', 'regular_price', 'sale_price', 'description']);
+
+        //Dodavanje proizvoda
+        foreach ($products as $product) {
+            fputcsv($file, [
+                $product->product_number,
+                $product->category->category_name,
+                $product->department->department_name,
+                $product->manufacturer->manufacturer_name,
+                $product->upc,
+                $product->sku,
+                $product->regular_price,
+                $product->sale_price,
+                $product->description
+            ]);
+        }
+
+        //Zatvaranje fajla
+        fclose($file);
+
+        return response()->json(['message' => 'CSV fajl je uspesno generisan!', 'file' => storage_path("app/public/{$file_name}")]);
+    }
+
 }
