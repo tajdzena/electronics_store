@@ -25,3 +25,12 @@ REST putanje koje imaju PUT i DELETE zahteve testirane su pomoću platforme Post
 Ostale putanje, sa GET zahtevom, mogu se testirati i preko browser URL-a.
 
 Svaka funkcionalnost vezana za podatke prikazana je u JSON formatu, za bonus zadatak, fajl se kreira na putanji storage/app/public.
+
+Odluke koje možda deluju čudno, i o kojima ću rado porazgovarati:
+	- Za tabelu proizvod prvobitno je napravljen kombinovan primarni ključ koji se sastoji od product_number i UPC.
+	  Kasnije tokom izrade projekta, odlučila sam da zadržim samo UPC kao primarni ključ. Mogla sam da napravim product_id, ali sam to 
+	  smatrala nepotrebnim, ako korisnik najčešće nalazi proizvod preko UPC ili broja. 
+	- Tokom uvoza podataka iz product_categories.csv fajla, za opis jednog proizvoda se dešava da je napravljen prelaz u novi red (sa sve ;;;;)
+	  i u novom redu nastavljen opis za isti proizvod, umesto da se naiđe na novi. S obzirom na to da je samo jedan slučaj u pitanju,
+	  i zbog već dosta igrarija oko parsiranja, rešila sam da ga tretiram kao izuzetak - u terminalu se ispisuje taj novi red koji je 
+	  problematičan i odbacuje se.
